@@ -1,0 +1,1 @@
+Cirfit nace como un proyecto para el curso de "React JS" de Coderhouse. Elegí este proyecto a modo de manifestar una idea a nivel familiar, el de tener nuestro propio emprendimiento de ropa deportiva y accesorios. 
