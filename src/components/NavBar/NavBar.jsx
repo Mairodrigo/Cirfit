@@ -1,15 +1,22 @@
 import React from "react";
+import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
-import logo from "../../assets/cirfitlogo.png"
+import logo from "../../assets/cirfitlogo.png";
 
 const NavBar = () => {
 	return (
 		<nav>
-			<h1>CirFit indumentaria y accesorios</h1>
-            <img src={logo} alt="Logo Cirfit: rombo blanco fondo negro con letras blancas" className="imgLogo" />
+			<div className="encabezado-container">
+				<img
+					src={logo}
+					alt="Logo Cirfit: rombo blanco fondo negro con letras blancas"
+					className="imgLogo"
+				/>
+				<h1>CirFit indumentaria y accesorios</h1>
+			</div>
 
 			{/* Lista de menú */}
-			<ul>
+			<ul className="menu-container">
 				<li>
 					<a href="" className="menu-item">
 						Inicio
@@ -18,6 +25,11 @@ const NavBar = () => {
 				<li>
 					<a href="" className="menu-item">
 						Nosotros
+					</a>
+				</li>
+				<li>
+					<a href="" className="menu-item">
+						Como comprar
 					</a>
 				</li>
 				<li>

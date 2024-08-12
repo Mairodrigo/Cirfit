@@ -1,0 +1,54 @@
+nav {
+	width: 100%;
+}
+
+.encabezado-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+	color: rgb(248, 248, 248);
+}
+
+.imgLogo {
+	width: 20%;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+}
+
+/*Estilos para el contenido de la lista de mi menu*/
+ul {
+	list-style: none;
+	padding: 0;
+	display: inline-block;
+}
+/*Contenedor menu inicial*/
+.menu-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 3vh;
+	padding: 10px 20px;
+	width: 100%;
+}
+
+/*Items del menu*/
+.menu-item {
+	color: rgb(222, 212, 212);
+	font-size: medium;
+	font-weight: 400;
+}
+
+.menu-item:hover {
+	color: rgb(205, 198, 196);
+	transition: color 0.8s;
+	font-weight: 500;
+}
