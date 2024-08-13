@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
 import logo from "../../assets/cirfitlogo.png";
+import { getProductos } from "../asyncMock";
 
 const NavBar = () => {
+	const [categorias, setCategorias] = useState([]);
+
+	useEffect(() => {
+		getProductos().then((productos) => {
+			const categoriasUnicas = [
+				new Set(productos.map((producto) => producto.categoria)),
+			];
+			setCategorias(categoriasUnicas);
+		});
+	}, []);
+
 	return (
 		<nav>
 			<div className="encabezado-container">
@@ -19,7 +32,7 @@ const NavBar = () => {
 			<ul className="menu-container">
 				<li>
 					<a href="" className="menu-item">
-						Inicio
+						Tienda
 					</a>
 				</li>
 				<li>
