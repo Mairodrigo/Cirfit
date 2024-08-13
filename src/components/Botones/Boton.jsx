@@ -4,7 +4,7 @@ import "./Boton.css";
 const Boton = ({ texto, fn }) => {
 	return (
 		<>
-			<button className="mas" onClick={() => fn()}>
+			<button className="btn" onClick={() => fn()}>
 				{" "}
 				{texto}{" "}
 			</button>

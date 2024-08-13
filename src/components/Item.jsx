@@ -5,7 +5,7 @@ const Item = ({ producto }) => {
 	return (
 		<>
 			<div>{producto.nombre}</div>;
-            <ItemCountCount/>
+            <ItemCount/>
 
 		</>
 	);

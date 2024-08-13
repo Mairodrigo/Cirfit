@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
-import Boton from "../Boton";
+import Boton from "../Botones/Boton";
+
 
 const ItemCount = ({ id }) => {
 	const [count, setCount] = useState(1);
 	const [productos, setProductos] = useState(1);
 	const [ordenados, setOrdenados] = useState(true);
 	const sumar = () => {
-		if (count < 10) setCount(count + 1);
+		if (count < 5) setCount(count + 1);
 	};
 	const restar = () => {
 		if (count > 1) setCount(count - 1);
 	};
 
 	const comprar = () => {
-		console.log(`compraste ${count} unidades`);
+		const total = productos.precio * count;
+		console.log(
+			`Compraste ${count} unidades de ${
+				productos.nombre
+			}. Total $${total.toFixed(2)}`
+		);
 	};
 
 	return (
