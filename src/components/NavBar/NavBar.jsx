@@ -31,27 +31,19 @@ const NavBar = () => {
 			{/* Lista de menú */}
 			<ul className="menu-container">
 				<li>
-					<a href="" className="menu-item">
-						Tienda
-					</a>
+					<Link to="./" className="menu-item">
+						Inicio
+					</Link>
 				</li>
 				<li>
-					<a href="" className="menu-item">
+					<Link to="./nosotros" className="menu-item">
 						Nosotros
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="" className="menu-item">
-						Como comprar
-					</a>
-				</li>
-				<li>
-					<a href="" className="menu-item">
+					<Link to="./contacto" className="menu-item">
 						Contacto
-					</a>
-				</li>
-				<li>
-					<CartWidget />
+					</Link>
 				</li>
 			</ul>
 		</nav>
