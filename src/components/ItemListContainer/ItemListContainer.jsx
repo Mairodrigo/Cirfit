@@ -7,14 +7,28 @@ const ItemListContainer = ({ categoria }) => {
 	const [cargando, setCargando] = useState(true);
 
 	useEffect(() => {
+		setCargando(true);
 		getProductos()
-			.then((res) => setProductos(res))
-			.catch()
+			.then((res) => {
+				const productosFiltrados = categoria
+					? res.filter((producto) => producto.categoria === categoria)
+					: res;
+				setProductos(productosFiltrados);
+			})
+			.catch((error) => console.error("Error al cargar productos:", error))
 			.finally(() => setCargando(false));
-	}, []);
+	}, [categoria]);
 
 	if (cargando) {
-		return <h3>Cargando la tienda</h3>;
+		return <h3>Cargando la tienda...</h3>;
+	}
+
+	const productosFiltrados = categoria
+		? productos.filter((producto) => producto.categoria === categoria)
+		: productos;
+
+	if (productosFiltrados.length === 0) {
+		return <h3>No hay productos disponibles en esta categoría</h3>;
 	}
 
 	return (
@@ -25,8 +39,8 @@ const ItemListContainer = ({ categoria }) => {
 					: "Todos los productos"}
 			</h2>
 			<div className="item-list">
-				{productos.map((producto) => (
-					<Item key={producto.id} producto={producto} /> 
+				{productosFiltrados.map((producto) => (
+					<Item key={producto.id} producto={producto} />
 				))}
 			</div>
 		</div>

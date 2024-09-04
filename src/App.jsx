@@ -6,19 +6,26 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 
 function App() {
-	const [count, setCount] = useState(0);
+	const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
+
+	const manejarCambioCategoria = (categoria) => {
+		setCategoriaSeleccionada(categoria);
+	};
 
 	return (
 		<BrowserRouter>
-			<NavBar />
+			<NavBar onCambiarCategoria={manejarCambioCategoria} />
 			<Routes>
-				{/* 			<Route path="/" element={<Inicio />} />
-				<Route path="/nosotros" element={<Nosotros />} />
-				<Route path="/contacto" element={<Contacto />} /> */}
-				<Route path="/" element={<ItemListContainer />} />
-				<Route path="/category/:category" element={<ItemListContainer />} />
+				<Route
+					path="/"
+					element={<ItemListContainer categoria={categoriaSeleccionada} />}
+				/>
+				<Route
+					path="/category/:category"
+					element={<ItemListContainer categoria={categoriaSeleccionada} />}
+				/>
 				<Route path="/product/:id" element={<ItemDetailContainer />} />
-				<Route path="*" element={<h2>Creemos que hubo un error 404! </h2>} />
+				<Route path="*" element={<h2>Creemos que hubo un error 404!</h2>} />
 			</Routes>
 		</BrowserRouter>
 	);
