@@ -20,7 +20,7 @@ const NavBar = ({ onCambiarCategoria }) => {
 			{/* Lista de menú */}
 			<ul className="menu-container">
 				<li>
-					<Link to="./" className="menu-item">
+					<Link to="/" className="menu-item">
 						Inicio
 					</Link>
 				</li>

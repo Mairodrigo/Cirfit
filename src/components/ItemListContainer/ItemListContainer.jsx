@@ -5,9 +5,11 @@ import Item from "./Item";
 const ItemListContainer = ({ categoria }) => {
 	const [productos, setProductos] = useState([]);
 	const [cargando, setCargando] = useState(true);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		setCargando(true);
+		setError(null);
 		getProductos()
 			.then((res) => {
 				const productosFiltrados = categoria

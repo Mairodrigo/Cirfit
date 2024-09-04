@@ -90,7 +90,12 @@ const productos = [
 export const getProductos = () => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			resolve(productos);
+			try {
+				resolve(productos);
+			} catch (error) {
+				reject(error);
+			}
 		}, 1000);
 	});
 };
+

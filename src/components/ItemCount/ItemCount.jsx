@@ -5,7 +5,7 @@ import { getProductos } from "../asyncMock";
 
 const ItemCount = ({ id }) => {
 	const [count, setCount] = useState(1);
-	const [productos, setProductos] = useState(1);
+	const [productos, setProductos] = useState({});
 
 	const sumar = () => {
 		if (count < 5) setCount(count + 1);
