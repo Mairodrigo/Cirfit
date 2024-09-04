@@ -5,7 +5,7 @@ import { getProductos } from "../asyncMock";
 
 const ItemCount = ({ id }) => {
 	const [count, setCount] = useState(1);
-	const [productos, setProductos] = useState({});
+	const [productos, setProductos] = useState(1);
 
 	const sumar = () => {
 		if (count < 5) setCount(count + 1);
@@ -24,7 +24,7 @@ const ItemCount = ({ id }) => {
 			<Boton texto="-" fn={restar} />
 			<span className="producto-cantidad">{count}</span>
 			<Boton texto="+" fn={sumar} />
-			<Boton texto="Comprar" fn={comprar} />
+			<Boton texto="Agregar al carrito" fn={comprar} />
 		</div>
 	);
 };
