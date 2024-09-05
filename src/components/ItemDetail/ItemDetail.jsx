@@ -1,31 +1,30 @@
-import React, { useState, useContext } from "react";
-import { CartContext } from "../../context/CartContext.jsx";
-import ItemCount from "../ItemCount/ItemCount.jsx";
+import React, { useContext } from "react";
+import "../ItemDetail/ItemDetail.css";
+import ItemCount from "../ItemCount/ItemCount";
+import { CartContext } from "../../context/CartContext";
 
-const ItemDetail = ({ product }) => {
-	const [agregadoAlCarrito, setAgregadoAlCarrito] = useState(false); 
-	const { agregarAlCarrito } = useContext(CartContext); 
+const ItemDetail = ({ producto }) => {
+	const { agregarAlCarrito } = useContext(CartContext);
 
-	const onAdd = (cantidad) => {
-		agregarAlCarrito(product, cantidad); 
-		setAgregadoAlCarrito(true); 
+	const { id, image, title, description, category, sale, price } = producto;
+
+	const handleComprar = (count) => {
+		agregarAlCarrito({ ...producto, quantity: count });
 	};
 
 	return (
 		<div>
-			<h3>{product.nombre}</h3>
-			<p>{product.detalle}</p>
-			<p>Precio: ${product.precio}</p>
-            
-			{product.stock > 0 ? ( //Para el futuro, cuando haya manejo de stock
-				!agregadoAlCarrito ? (
-					<ItemCount stock={product.stock} onAdd={onAdd} />
-				) : (
-					<p>Producto añadido al carrito.</p> 
-				)
-			) : (
-				<p>Producto sin stock.</p> // Mensaje de sin stock
-			)}
+			<Card className="itemdetail text-center" style={{ width: "20rem" }}>
+				<Card.Img variant="top" src={image} />
+				<Card.Header>
+					${price} x {sale}
+				</Card.Header>
+				<Card.Body>
+					<Card.Title> {title} </Card.Title>
+					<Card.Text> {description} </Card.Text>
+					<ItemCount id={id} handleComprar={handleComprar} />
+				</Card.Body>
+			</Card>
 		</div>
 	);
 };

@@ -1,10 +1,12 @@
 import React from "react";
-import ItemCount from "../ItemCount/ItemCount";
 import "./Item.css";
 import { Link } from "react-router-dom";
+import Boton from "../Boton/Boton";
+import ItemCount from "../ItemCount/ItemCount";
 
-const Item = ({ producto }) => {
-	const { id, nombre, detalle, precio, categoria, img } = producto;
+const Item = (props) => {
+	const { producto } = props;
+	const { id, nombre, detalle, precio, category, img } = producto;
 	return (
 		<div className="item-card-container">
 			<div className="item-card">
@@ -12,7 +14,7 @@ const Item = ({ producto }) => {
 				<h2 className="item-nombre">{producto.nombre}</h2>
 				<p className="item-precio">${producto.precio}</p>
 				<Link to={`/detalle/${id}`}>
-					Ver detalles
+					<Boton> Ver detalle</Boton>
 				</Link>
 				<ItemCount />
 			</div>

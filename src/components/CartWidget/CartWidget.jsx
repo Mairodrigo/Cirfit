@@ -1,19 +1,14 @@
 import React, { useContext } from "react";
 import "./CartWidget.css";
-import { CartContext } from "../../context/CartContext.jsx";
+import { CartContext } from "../../context/CartContext";
 
 const CartWidget = () => {
-	const { cart } = useContext(CartContext);
-
-const totalUnidades = (cart || []).reduce(
-		(acc, item) => acc + (item.cantidad || 0),
-		0
-);
+	const { mostrarCantidad } = useContext(CartContext);
 
 	return (
-		<div className="cart-widget">
+		<div>
 			🛒
-			{totalUnidades > 0 && <span className="cart-count">{totalUnidades}</span>}
+			<span>{mostrarCantidad()}</span>
 		</div>
 	);
 };

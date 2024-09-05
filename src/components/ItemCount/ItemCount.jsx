@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from "react";
-import Boton from "../Botones/Boton";
+import { useState, useContext } from "react";
+import Boton from "../Boton/Boton";
 import "./ItemCount.css";
-import { getProductos } from "../asyncMock";
+import { CartContext } from "../../context/CartContext";
 
 const ItemCount = ({ id }) => {
+	const { agregarCarrito } = useContext(CartContext); 
+
 	const [count, setCount] = useState(1);
-	const [productos, setProductos] = useState(1);
 
 	const sumar = () => {
 		if (count < 5) setCount(count + 1);
 	};
+
 	const restar = () => {
 		if (count > 1) setCount(count - 1);
 	};
 
-	const comprar = () => {
-		const total = productos.precio * count;
-		console.log(`Tu compra fue de ${count} unidades`);
-	};
+	const manejarAgregarCarrito = () => {
+		agregarCarrito({ id, cantidad: count }); // Aquí estamos pasando un objeto
+	};  
 
 	return (
-		<div className="container">
+		<div>
+			<p>Cantidad:</p>
 			<Boton texto="-" fn={restar} />
-			<span className="producto-cantidad">{count}</span>
+			<span>{count}</span>
 			<Boton texto="+" fn={sumar} />
-			<Boton texto="Agregar al carrito" fn={comprar} />
+			<div>
+				<Boton texto="Agregar a carrito" fn={manejarAgregarCarrito} />
+			</div>
 		</div>
 	);
 };

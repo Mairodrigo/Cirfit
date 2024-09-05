@@ -7,7 +7,7 @@ export const CartContextProvider = ({ children }) => {
 	const [cart, setCart] = useState([]);
 
 
-	const agregarAlCarrito = (producto) => {
+	const agregarCarrito = (producto) => {
 		// Verifica si el producto ya está en el carrito
 		const productoExistente = cart.find((item) => item.id === producto.id);
 		if (productoExistente) {
@@ -19,12 +19,11 @@ export const CartContextProvider = ({ children }) => {
 						: item
 				)
 			);
-            //No existia el producto en el carrito:
 		} else {
 			// Agrega el nuevo producto al carrito
- setCart([...cart, { ...producto, cantidad: producto.cantidad || 1 }]);		}
+			setCart([...cart, { ...producto, cantidad: producto.cantidad || 1 }]);
+		}
 	};
-
 	const vaciarCarrito = () => {
 		setCart([]);
 	};
@@ -44,7 +43,7 @@ export const CartContextProvider = ({ children }) => {
 			value={{
 				cart,
 				setCart,
-				agregarAlCarrito,
+				agregarCarrito,
 				vaciarCarrito,
 				eliminarProducto,
 				mostrarCantidad,
