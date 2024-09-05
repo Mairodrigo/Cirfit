@@ -4,7 +4,7 @@ import "./ItemCount.css";
 import { CartContext } from "../../context/CartContext";
 
 const ItemCount = ({ id }) => {
-	const { agregarCarrito } = useContext(CartContext); 
+	const { agregarCarrito } = useContext(CartContext);
 
 	const [count, setCount] = useState(1);
 
@@ -18,13 +18,13 @@ const ItemCount = ({ id }) => {
 
 	const manejarAgregarCarrito = () => {
 		agregarCarrito({ id, cantidad: count }); // Aquí estamos pasando un objeto
-	};  
+	};
 
 	return (
 		<div>
-			<p>Cantidad:</p>
+			<p className="producto-cantidad">Cantidad:</p>
 			<Boton texto="-" fn={restar} />
-			<span>{count}</span>
+			<span className="producto-cantidad">{count}</span>
 			<Boton texto="+" fn={sumar} />
 			<div>
 				<Boton texto="Agregar a carrito" fn={manejarAgregarCarrito} />

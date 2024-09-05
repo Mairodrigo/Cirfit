@@ -6,9 +6,9 @@ const CartWidget = () => {
 	const { mostrarCantidad } = useContext(CartContext);
 
 	return (
-		<div>
+		<div className="cart-widget">
 			🛒
-			<span>{mostrarCantidad()}</span>
+			<span className="cart-count">{mostrarCantidad()}</span>
 		</div>
 	);
 };
