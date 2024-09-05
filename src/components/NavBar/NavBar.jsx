@@ -2,7 +2,7 @@ import React from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
-import logo from "../../assets/cirfitlogo.png";
+import logo from "../../assets/cirfitLogo.png";
 import CategorySelector from "../CategorySelector/CategorySelector";
 
 const NavBar = ({ onCambiarCategoria }) => {
