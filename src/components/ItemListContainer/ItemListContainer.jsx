@@ -4,14 +4,17 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { db } from "../../services/firebaseConfig";
 import { getDocs, collection, query, where } from "firebase/firestore";
-import "./ItemListContainer.css"
+import "./ItemListContainer.css";
 
-const ItemListContainer = ({ saludo }) => {
+const ItemListContainer = ({ saludo, categoria }) => {
 	const [productos, setProductos] = useState([]);
 	const [cargando, setCargando] = useState(true);
 
 	const { contexto, mostrarMensaje } = useContext(CartContext);
 	const { categoryName } = useParams();
+
+	// Combina la categoría de los parámetros y la categoría seleccionada
+	const categoriaActual = categoryName || categoria;
 
 	useEffect(() => {
 		setCargando(true);
@@ -22,11 +25,11 @@ const ItemListContainer = ({ saludo }) => {
 		const obtenerProductos = async () => {
 			try {
 				let snapshot;
-				if (categoryName) {
-					console.log(`Filtrando productos por categoría: ${categoryName}`);
+				if (categoriaActual) {
+					console.log(`Filtrando productos por categoría: ${categoriaActual}`);
 					const prodsPorCat = query(
 						productosRef,
-						where("category", "==", categoryName)
+						where("category", "==", categoriaActual)
 					);
 					snapshot = await getDocs(prodsPorCat);
 				} else {
@@ -49,7 +52,7 @@ const ItemListContainer = ({ saludo }) => {
 		};
 
 		obtenerProductos();
-	}, [categoryName]);
+	}, [categoriaActual]);
 
 	if (cargando) {
 		return <h2>Cargando productos...</h2>;

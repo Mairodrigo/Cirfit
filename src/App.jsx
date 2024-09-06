@@ -6,7 +6,7 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { Cart } from "./components/Cart/Cart";
 import { CartContextProvider } from "./context/CartContext";
-import Checkout from "./components/CheckOut/CheckOut"
+import Checkout from "./components/CheckOut/CheckOut";
 
 function App() {
 	const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
@@ -16,15 +16,18 @@ function App() {
 	};
 
 	return (
-		// estado de carrito accesible desde toda mi app
 		<CartContextProvider>
 			<BrowserRouter>
-				<NavBar />
+				<NavBar onCambiarCategoria={manejarCambioCategoria} />
 				<Routes>
-					<Route path="/" element={<ItemListContainer />} />
+					<Route
+						path="/"
+						element={<ItemListContainer categoria={categoriaSeleccionada} />}
+					/>
+					<Route path="/productos" element={<ItemListContainer />} />
 					<Route
 						path="/category/:categoryName"
-						element={<ItemListContainer />}
+						element={<ItemListContainer categoria={categoriaSeleccionada} />}
 					/>
 					<Route path="/detalle/:id" element={<ItemDetailContainer />} />
 					<Route path="/cart" element={<Cart />} />
