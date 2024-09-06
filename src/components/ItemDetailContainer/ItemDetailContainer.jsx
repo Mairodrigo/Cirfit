@@ -31,23 +31,17 @@ const ItemDetailContainer = () => {
 	if (cargando) {
 		return (
 			<h2>
-				<Alert key="success" variant="success">
 					Cargando...
-				</Alert>
+		
 			</h2>
 		);
 	}
 
 	return (
 		<>
-			<div className="text-center my-4">
-				<h1>
-					<strong>
-						Los <span className="c-verde">mejores productos</span> de San Juan
-					</strong>
-				</h1>
+			<div>
 			</div>
-			<div className="card_detail_container">
+			<div>
 				<ItemDetail producto={producto} />
 			</div>
 		</>

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { db } from "../../services/firebaseConfig";
 import { getDocs, collection, query, where } from "firebase/firestore";
+import "./ItemListContainer.css"
 
 const ItemListContainer = ({ saludo }) => {
 	const [productos, setProductos] = useState([]);
@@ -51,11 +52,11 @@ const ItemListContainer = ({ saludo }) => {
 	}, [categoryName]);
 
 	if (cargando) {
-		return <h2>Cargando.......</h2>;
+		return <h2>Cargando productos...</h2>;
 	}
 
 	return (
-		<div>
+		<div className="div-container">
 			<h3 onClick={() => mostrarMensaje()}>{contexto}</h3>
 			{productos.length === 0 ? (
 				<h2>No hay productos disponibles</h2>

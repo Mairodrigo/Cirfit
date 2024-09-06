@@ -1,9 +1,12 @@
 .item-card-container{
 	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: stretch;
+	width: 18rem;
 	
 }
 .item-card {
-	width: 25%;
 	height: auto;
 	margin: 10px;
 	padding: 10px;
@@ -25,7 +28,7 @@
 }
 
 .item-img {
-    width: 100%;
-    height: auto;
+    width: 15rem;
+    height: 15rem;
     object-fit: cover;
 }

@@ -7,8 +7,8 @@
     font-size: 1.5rem; 
     background-color: #333; 
     border-radius: 8px; 
-    padding: 0.5rem 0.5rem; /* Espaciado interno del widget */
-    margin: 1rem; /* Espaciado exterior del widget */
+    padding: 0.5rem 0.5rem; 
+    margin: 1rem;
 }
 
 .cart-icon {

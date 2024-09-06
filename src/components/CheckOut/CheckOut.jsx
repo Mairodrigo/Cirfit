@@ -1,10 +1,7 @@
 import React, { useContext, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import { CartContext } from "../../context/CartContext";
 import { db } from "../../services/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
-import "./Checkout.css";
 
 const Checkout = () => {
 	const [nombre, setNombre] = useState("");
