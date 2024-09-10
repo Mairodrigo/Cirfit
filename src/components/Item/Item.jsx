@@ -14,7 +14,7 @@ const Item = (props) => {
 				<h2 className="item-nombre">{producto.nombre}</h2>
 				<p className="item-precio">${producto.precio}</p>
 				<Link to={`/detalle/${id}`}>
-					<Boton> Ver detalle</Boton>
+					<Boton texto="Ver detalles"></Boton>
 				</Link>
 				<ItemCount />
 			</div>

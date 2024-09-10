@@ -13,13 +13,10 @@ const ItemListContainer = ({ saludo, categoria }) => {
 	const { contexto, mostrarMensaje } = useContext(CartContext);
 	const { categoryName } = useParams();
 
-	// Combina la categoría de los parámetros y la categoría seleccionada
 	const categoriaActual = categoryName || categoria;
 
 	useEffect(() => {
 		setCargando(true);
-		console.log("Obteniendo productos de Firestore...");
-
 		const productosRef = collection(db, "Productos");
 
 		const obtenerProductos = async () => {
@@ -33,7 +30,6 @@ const ItemListContainer = ({ saludo, categoria }) => {
 					);
 					snapshot = await getDocs(prodsPorCat);
 				} else {
-					console.log("Obteniendo todos los productos");
 					snapshot = await getDocs(productosRef);
 				}
 
@@ -42,7 +38,6 @@ const ItemListContainer = ({ saludo, categoria }) => {
 					id: doc.id,
 				}));
 
-				console.log("Productos obtenidos: ", prods);
 				setProductos(prods);
 			} catch (error) {
 				console.error("Error al obtener productos: ", error);

@@ -5,26 +5,31 @@ import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ producto }) => {
 	const { agregarAlCarrito } = useContext(CartContext);
-
-	const { id, image, title, description, category, sale, price } = producto;
+	const [loading, setLoading] = React.useState(false);
 
 	const handleComprar = (count) => {
-		agregarAlCarrito({ ...producto, quantity: count });
+		if (producto) {
+			agregarAlCarrito({ ...producto, quantity: count });
+		}
 	};
 
+	if (!producto) {
+		return <div>No se encontró el producto</div>;
+	}
+
+	const { img, nombre, detalle, precio } = producto;
+
 	return (
-		<div>
-			<Card className="itemdetail text-center" style={{ width: "20rem" }}>
-				<Card.Img variant="top" src={image} />
-				<Card.Header>
-					${price} x {sale}
-				</Card.Header>
-				<Card.Body>
-					<Card.Title> {title} </Card.Title>
-					<Card.Text> {description} </Card.Text>
-					<ItemCount id={id} handleComprar={handleComprar} />
-				</Card.Body>
-			</Card>
+		<div className="itemdetail-container">
+			<div className="itemdetail-card">
+				<img className="itemdetail-img" src={img} alt={nombre} />
+				<div className="itemdetail-precio">${precio}</div>
+			<div className="itemdetail-card">
+					<h2 className="itemdetail-nombre">{nombre}</h2>
+					<p className="itemdetail-detalle">{detalle}</p>
+					<ItemCount id={producto.id} handleComprar={handleComprar} />
+				</div>
+			</div>
 		</div>
 	);
 };

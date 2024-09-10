@@ -1,24 +1,27 @@
 import { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { db } from "../../services/firebaseConfig";
 import { getDoc, doc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
-	const [producto, setProducto] = useState({});
+	const [producto, setProducto] = useState(null);
 	const [error, setError] = useState(null);
 	const [cargando, setCargando] = useState(true);
 	const { id } = useParams();
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchProducto = async () => {
 			try {
-				const productoRef = doc(db, "productos", id);
+				const productoRef = doc(db, "Productos", id);
 				const res = await getDoc(productoRef);
-				const data = res.data();
-				const productoFormateado = { ...data, id: res.id };
-				setProducto(productoFormateado);
+				if (res.exists()) {
+					const data = res.data();
+					const productoFormateado = { ...data, id: res.id };
+					setProducto(productoFormateado);
+				} else {
+					console.log("No se encontró el producto");
+				}
 			} catch (error) {
 				setError(error);
 			} finally {
@@ -29,22 +32,17 @@ const ItemDetailContainer = () => {
 	}, [id]);
 
 	if (cargando) {
-		return (
-			<h2>
-					Cargando...
-		
-			</h2>
-		);
+		return <h2>Cargando...</h2>;
+	}
+
+	if (error) {
+		return <h2>Error al obtener el producto</h2>;
 	}
 
 	return (
-		<>
-			<div>
-			</div>
-			<div>
-				<ItemDetail producto={producto} />
-			</div>
-		</>
+		<div>
+			<ItemDetail producto={producto} />
+		</div>
 	);
 };
 

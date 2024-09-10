@@ -22,7 +22,6 @@ const ItemCount = ({ id }) => {
 
 	return (
 		<div>
-			<p className="producto-cantidad">Cantidad:</p>
 			<Boton texto="-" fn={restar} />
 			<span className="producto-cantidad">{count}</span>
 			<Boton texto="+" fn={sumar} />

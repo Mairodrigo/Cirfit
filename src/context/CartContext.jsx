@@ -8,19 +8,18 @@ export const CartContextProvider = ({ children }) => {
 
 
 	const agregarCarrito = (producto) => {
-		// Verifica si el producto ya está en el carrito
+
 		const productoExistente = cart.find((item) => item.id === producto.id);
 		if (productoExistente) {
-			// Actualiza la cantidad del producto existente
+
 			setCart(
 				cart.map((item) =>
 					item.id === producto.id
-						? { ...item, cantidad: item.cantidad + producto.cantidad }
+						? { ...item, cantidad: (item.cantidad ||0) + (producto.cantidad ||1) }
 						: item
 				)
 			);
 		} else {
-			// Agrega el nuevo producto al carrito
 			setCart([...cart, { ...producto, cantidad: producto.cantidad || 1 }]);
 		}
 	};
@@ -33,7 +32,6 @@ export const CartContextProvider = ({ children }) => {
 		setCart(newCart);
 	};
 
-	// Función para mostrar la cantidad total de productos en el carrito
 	const mostrarCantidad = () => {
 		return cart.reduce((acc, curr) => acc + (curr.cantidad || 0), 0);
 	};
