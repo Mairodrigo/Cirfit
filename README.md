@@ -1,12 +1,11 @@
-# CirFit: Accesorios e indumentaria
-Cirfit nace como un proyecto para el curso de "React JS" de Coderhouse. Elegí este proyecto a modo de manifestar una idea a nivel familiar: tener nuestro propio emprendimiento de ropa deportiva y accesorios.  
-
+# CirFit - Proyecto Final Coderhouse
+Cirfit nace como un proyecto para el curso de **"React JS" de Coderhouse**. Elegí este proyecto a modo de manifestar una idea a nivel familiar: tener nuestro propio emprendimiento de ropa deportiva y accesorios.  
 
 ## Estado del proyecto
 En desarrollo
 
 ## Descripcion del proyecto
-SPA con estructura por componentes.
+Este sitio web simula un ecommerce de indumentaria y accesorios deportivos. Se trata de una SPA con estructura por componentes.
 
 ## Funcionalidad y descripcion de cada componente
 * ```Boton```: Para los botones de la pagina, reusables.
